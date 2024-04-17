@@ -1,22 +1,24 @@
-# number=[13, 27, 50, 58, 58, 86, 87, 101, 107, 107, 116, 117, 121, 145, 146, 149, 
-#         159, 170, 184, 189, 197, 199, 226, 234, 235, 236, 237, 240, 252, 265, 
-#         276, 289, 301, 322, 338, 358, 383, 385, 398, 406, 413, 414, 420, 423, 425, 
-#         426, 428, 431, 436, 472, 475, 482, 487, 492, 494, 513, 523, 529, 566, 568, 
-#         576, 576, 599, 599, 600, 609, 617, 624, 633, 644, 646, 654, 661, 698, 712, 
-#         719, 728, 728, 762, 783, 799, 826, 828, 832, 847, 849, 880, 880, 890, 893, 
-#         906, 911, 923, 924, 934, 943, 973, 974, 984]
-# def f(target, nums):
-#     start = 0
-#     end = len(nums) - 1
-#     while start <= end:
-#         mid = (start + end) // 2
-#         mid_value = nums[mid]
-#         if mid_value == target:
-#             return mid
-#         elif mid_value < target:
-#             start = mid + 1
-#         else:
-#             end = mid - 1
+class Iterator:
+    def __init__(self, start, end, step, marta):
+        self.current = start
+        self.end = end
+        self.step = step 
+        self.marta = marta
 
-# number[f(184,number)],number[-1]=number[-1],number[f(184,number)]
-# print(number)
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        i=0
+        while i<=self.marta:
+            i+=1
+            if self.current<=self.end:
+                res = self.current
+                self.current+=self.step
+                return res   
+            else:
+                    raise StopIteration
+            
+result = Iterator(start=1, end=10, step=2, marta=2)
+for i in result:
+    print(i)
